@@ -1,0 +1,50 @@
+@import ./variables
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: 'roboto', sans-serif
+
+a
+  text-decoration: none
+
+body
+  background: $background
+  color: $main
+  min-height: 100vh
+
+header
+  background: $dark
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 0 1rem 0 0
+  user-select: none
+
+article
+  height: calc(100vh - 35px - 1rem)
+  padding: 1rem 5rem 0
+
+nav
+  display: flex
+
+  &>*
+    padding: .5rem
+    border: none
+    background: none
+    color: $main
+    cursor: pointer
+    transition: .5s
+    border-bottom: 2px solid rgba(0,0,0,0)
+
+    &:hover
+      transition: .2s
+      background: $third
+      color: $dark
+      border-bottom: 2px solid $main
+
+.center
+  display: flex
+  justify-content: center
+  align-items: center

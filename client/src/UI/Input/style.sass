@@ -1,0 +1,47 @@
+@import ../../styles/variables
+  
+.form
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+.field
+  border: $dark 3px solid
+  background: $dark
+  color: $main
+  padding: .5rem
+  outline: none
+
+  font-size: .75rem
+  font-weight: 600
+  
+  max-width: 24rem
+  min-width: 24rem
+  min-height: 3rem
+  max-height: 3rem
+
+  border-top-right-radius: .25rem
+  border-top-left-radius: .25rem
+
+  &:focus
+    border: $second 3px solid
+
+.button
+  border: $dark 3px solid
+  border-top: none
+  background: $background
+  color: $main
+  padding: .5rem
+  cursor: pointer
+  outline: none
+  width: 100%
+  transition: .5s
+
+  border-bottom-left-radius: .25rem
+  border-bottom-right-radius: .25rem
+
+  &:hover
+    background: $main
+    color: $dark
+    font-weight: 700

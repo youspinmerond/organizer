@@ -1,0 +1,32 @@
+@import ../../styles/variables
+.block
+  width: min-content
+  margin: 1rem
+
+.head
+  background: $dark
+  display: flex
+  align-items: center
+  justify-content: space-between
+  user-select: none
+  padding: .5rem 1rem
+  width: 13.75rem
+
+
+  &>button
+    padding: 0 0 0 1rem
+    background: none
+    border: none
+
+.list
+  background: $dark
+  overflow: scroll
+  position: absolute
+  width: max-content
+  width: 13.75rem
+  word-wrap: word-wrap
+  border-bottom: 2px solid $dark
+
+  &>.content>a
+    display: block
+    margin: 0 0 1rem 0
