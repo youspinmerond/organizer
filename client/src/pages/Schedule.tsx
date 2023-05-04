@@ -1,3 +1,4 @@
+import Day from '../components/Day';
 import './styles/schedule.sass';
 
 interface IAction {
@@ -15,21 +16,78 @@ export default function Schedule({schedule}: {schedule?: ISchedule}) {
 
   if(!schedule) schedule = [
     {
-      id: 0,
-      name: 'Do',
-      description:'Do it',
-      day: 1,
-      date: new Date(),
-      status: false
-    },
-    {
       id: 1,
       name: 'Do',
       description:'Do it',
       day: 1,
-      date: new Date(Math.random()*1000000000),
+      date: new Date(Math.round(Math.random()*10**10)),
       status: false
     },
+    {
+      id: 10,
+      name: 'Do',
+      description:'Do it',
+      day: 1,
+      date: new Date(Math.round(Math.random()*10**10)),
+      status: false
+    },
+    {
+      id: 11,
+      name: 'Do',
+      description:'Do it',
+      day: 1,
+      date: new Date(Math.round(Math.random()*10**10)),
+      status: false
+    },
+    {
+      id: 2,
+      name: 'Do',
+      description:'Do it',
+      day: 2,
+      date: new Date(Math.round(Math.random()*10**10)),
+      status: false
+    },
+    {
+      id: 3,
+      name: 'Do',
+      description:'Do it',
+      day: 3,
+      date: new Date(Math.round(Math.random()*10**10)),
+      status: false
+    },
+    {
+      id: 4,
+      name: 'Do',
+      description:'Do it',
+      day: 4,
+      date: new Date(Math.round(Math.random()*10**10)),
+      status: false
+    },
+    {
+      id: 5,
+      name: 'Do',
+      description:'Do it',
+      day: 5,
+      date: new Date(Math.round(Math.random()*10**10)),
+      status: false
+    },
+    {
+      id: 6,
+      name: 'Do',
+      description:'Do it',
+      day: 6,
+      date: new Date(Math.round(Math.random()*10**10)),
+      status: false
+    },
+    {
+      id: 7,
+      name: 'Do',
+      description:'Do it',
+      day: 7,
+      date: new Date(Math.round(Math.random()*10**10)),
+      status: false
+    },
+    
   ];
 
   return (
@@ -37,16 +95,16 @@ export default function Schedule({schedule}: {schedule?: ISchedule}) {
       <h1>Your schedule.</h1>
       <div className="calendar">
         <div className="day">
-          <div className="_">0:00</div>
-          <div className="_">1:00</div>
-          <div className="_">2:00</div>
-          <div className="_">3:00</div>
-          <div className="_">4:00</div>
-          <div className="_">5:00</div>
-          <div className="_">6:00</div>
-          <div className="_">7:00</div>
-          <div className="_">8:00</div>
-          <div className="_">9:00</div>
+          <div className="_">00:00</div>
+          <div className="_">01:00</div>
+          <div className="_">02:00</div>
+          <div className="_">03:00</div>
+          <div className="_">04:00</div>
+          <div className="_">05:00</div>
+          <div className="_">06:00</div>
+          <div className="_">07:00</div>
+          <div className="_">08:00</div>
+          <div className="_">09:00</div>
           <div className="_">10:00</div>
           <div className="_">11:00</div>
           <div className="_">12:00</div>
@@ -62,28 +120,13 @@ export default function Schedule({schedule}: {schedule?: ISchedule}) {
           <div className="_">22:00</div>
           <div className="_">23:00</div>
         </div>
-        <div id="1" className="day">
-          {
-            schedule.map((e) => {
-              return (
-                <div
-                  key={e.id}
-                  className='elem'
-                  style={{position: 'relative', top: e.date.getHours()/24 * 100 + '%'}}
-                >
-                  {e.id}. {e.name}&nbsp;
-                  {e.date.getHours().toString()}:{e.date.getMinutes().toString()}
-                </div>
-              );
-            })
-          }
-        </div>
-        <div id="2" className="day">2</div>
-        <div id="3" className="day">3</div>
-        <div id="4" className="day">4</div>
-        <div id="5" className="day">5</div>
-        <div id="6" className="day">6</div>
-        <div id="7" className="day">7</div>
+        <Day id={1} schedule={schedule}/>
+        <Day id={2} schedule={schedule}/>
+        <Day id={3} schedule={schedule}/>
+        <Day id={4} schedule={schedule}/>
+        <Day id={5} schedule={schedule}/>
+        <Day id={6} schedule={schedule}/>
+        <Day id={7} schedule={schedule}/>
       </div>
     </article>
   );
