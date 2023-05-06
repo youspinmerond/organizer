@@ -1,21 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
+import { ActionDTO } from 'dto/action.dto';
 const prisma = new PrismaClient();
 
 @Injectable()
 export class AppService {
-  async createAction(): Promise<number> {
+  async createAction(body: ActionDTO): Promise<any> {
     const res = await prisma.action.create({
       data: {
-        name: '123',
-        description: '456',
-        day: '1',
-        date: new Date(),
-        status: false,
+        name: body.name,
+        description: body.description,
+        day: body.day,
+        date: new Date(body.date),
+        status: body.status,
       },
     });
-    console.log(res);
-    return 1;
+    return res;
   }
   async getAction(id: number): Promise<any> {
     if (typeof id === 'string') id = Number(id);
