@@ -21,27 +21,10 @@ const Schema = z.object({
 export class ActionsController {
   constructor(private readonly actionsService: ActionsService) {}
 
-  @Post()
-  async createAction(
-    @Body() body: ActionDTO,
-    @Res() res: Response,
-  ): Promise<void> {
-    const status = Schema.safeParse(body);
-    if (status.success === true) {
-      const result = await this.actionsService.createAction(body);
-      res.status(201);
-      res.json({ message: 'succes', result: result });
-    } else {
-      res.status(400);
-      res.json({ message: 'wrong data', result: status });
-    }
-  }
-
   @Get()
   abc() {
     return { message: 'You have to specify id in path.' };
   }
-
   @Get(':id')
   async getAction(
     @Param('id') id: number | 'len' | 'week',
@@ -62,5 +45,20 @@ export class ActionsController {
     const result = await this.actionsService.getAction(id as number);
     if (result === null) return { message: 'Action not been found.' };
     return result;
+  }
+  @Post()
+  async createAction(
+    @Body() body: ActionDTO,
+    @Res() res: Response,
+  ): Promise<void> {
+    const status = Schema.safeParse(body);
+    if (status.success === true) {
+      const result = await this.actionsService.createAction(body);
+      res.status(201);
+      res.json({ message: 'succes', result: result });
+    } else {
+      res.status(400);
+      res.json(status);
+    }
   }
 }

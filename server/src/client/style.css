@@ -28,6 +28,9 @@ p {
 .flex > *:first-child {
   margin: 0;
 }
+.block {
+  margin: 2rem 0 0;
+}
 .block > h2 {
   width: min-content;
   background: var(--gray);
