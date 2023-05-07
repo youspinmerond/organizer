@@ -1,0 +1,51 @@
+:root {
+  --dark: #4D4D4D;
+  --gray: #F9DBBB;
+  --white: #FFF4E0;
+  --red: #B46060;
+  --orange: #FFBF9B;
+}
+
+body {
+  background: var(--dark);
+  color: var(--white);
+  letter-spacing: .3px;
+  margin: 1rem 2rem;
+}
+h1,h2,h3, p {
+  margin: .5rem 0;
+}
+p {
+  line-height: 24px;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex > * {
+  margin: 0 0 0 .5rem;
+}
+.flex > *:first-child {
+  margin: 0;
+}
+.block > h2 {
+  width: min-content;
+  background: var(--gray);
+  border-radius: .25rem;
+  padding: 0 .25rem;
+  color: var(--red);
+}
+.subblock > h3 {
+  width: min-content;
+  background: var(--white);
+  border-radius: .25rem;
+  padding: 0 .25rem;
+  color: var(--red);
+}
+
+.selected {
+  background: var(--red);
+  border-radius: .25rem;
+  padding: 0 .25rem;
+  color: var(--orange);
+}
