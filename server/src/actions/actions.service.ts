@@ -49,4 +49,34 @@ export class ActionsService {
     });
     return week;
   }
+  async updateAction(action: ActionDTO): Promise<ActionDTO> {
+    const result = await prisma.action.upsert({
+      where: {
+        id: action.id,
+      },
+      update: {
+        name: action.name,
+        description: action.description,
+        status: action.status,
+        day: action.day,
+        date: action.date,
+      },
+      create: {
+        name: action.name,
+        description: action.description,
+        status: action.status,
+        day: action.day,
+        date: action.date,
+      },
+    });
+    return result;
+  }
+  async deleteAction(id: number): Promise<any> {
+    const result = await prisma.action.delete({
+      where: {
+        id: id,
+      },
+    });
+    return result;
+  }
 }

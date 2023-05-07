@@ -38,8 +38,11 @@ p {
   padding: 0 .25rem;
   color: var(--red);
 }
-.subblock > h3 {
+.subblock {
   width: min-content;
+}
+.subblock > h3 {
+  width: fit-content;
   background: var(--white);
   border-radius: .25rem;
   padding: 0 .25rem;

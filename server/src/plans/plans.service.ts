@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client';
+import { Plan, PrismaClient } from '@prisma/client';
 import { PlanDTO } from 'dto/plan.dto';
 const prisma = new PrismaClient();
 
@@ -10,7 +10,6 @@ export class PlansService {
     const result = await prisma.plan.findMany({
       take: count,
     });
-    console.log(result);
     return result;
   }
 
@@ -20,6 +19,32 @@ export class PlansService {
         name: plan.name,
         description: plan.description,
         status: plan.status,
+      },
+    });
+    return result;
+  }
+  async updatePlan(plan: Plan): Promise<PlanDTO> {
+    const result = await prisma.plan.upsert({
+      where: {
+        id: plan.id,
+      },
+      update: {
+        name: plan.name,
+        description: plan.description,
+        status: plan.status,
+      },
+      create: {
+        name: plan.name,
+        description: plan.description,
+        status: plan.status,
+      },
+    });
+    return result;
+  }
+  async deletePlan(id: number): Promise<any> {
+    const result = await prisma.plan.delete({
+      where: {
+        id: id,
       },
     });
     return result;

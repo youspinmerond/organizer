@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Res,
+} from '@nestjs/common';
 import { PlansService } from './plans.service';
 import { PlanDTO } from 'dto/plan.dto';
 import { z } from 'zod';
@@ -18,7 +27,6 @@ export class PlansController {
   getPlans() {
     return this.plansService.getPlans();
   }
-
   @Post()
   createPlan(@Body() body: PlanDTO, @Res() res: Response) {
     const status = schema.safeParse(body);
@@ -28,5 +36,21 @@ export class PlansController {
     }
     const result = this.plansService.createPlan(body);
     return result;
+  }
+  @Put(':id')
+  async updatePlan(@Param('id') id, @Body() body: PlanDTO) {
+    const status = schema.safeParse(body);
+    if (!status.success) return status;
+
+    const result = await this.plansService.updatePlan({
+      id: Number(id),
+      ...body,
+    });
+    console.log(result);
+    return result;
+  }
+  @Delete(':id')
+  deletePlan(@Param('id') id) {
+    return this.plansService.deletePlan(Number(id));
   }
 }

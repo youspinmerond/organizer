@@ -1,10 +1,19 @@
-import { Body, Controller, Get, Param, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Res,
+} from '@nestjs/common';
 import { ActionsService } from './actions.service';
 import { ActionDTO } from 'dto/action.dto';
 import { Response } from 'express';
 import { z } from 'zod';
 
-const Schema = z.object({
+const schema = z.object({
   name: z.string().min(3),
   description: z.string().min(4),
   day:
@@ -51,7 +60,7 @@ export class ActionsController {
     @Body() body: ActionDTO,
     @Res() res: Response,
   ): Promise<void> {
-    const status = Schema.safeParse(body);
+    const status = schema.safeParse(body);
     if (status.success === true) {
       const result = await this.actionsService.createAction(body);
       res.status(201);
@@ -60,5 +69,21 @@ export class ActionsController {
       res.status(400);
       res.json(status);
     }
+  }
+  @Put(':id')
+  async updatePlan(@Param('id') id, @Body() body: ActionDTO) {
+    const status = schema.safeParse(body);
+    if (!status.success) return status;
+
+    const result = await this.actionsService.updateAction({
+      id: Number(id),
+      ...body,
+    });
+    console.log(result);
+    return result;
+  }
+  @Delete(':id')
+  deletePlan(@Param('id') id) {
+    return this.actionsService.deleteAction(Number(id));
   }
 }
