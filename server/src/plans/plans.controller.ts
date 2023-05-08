@@ -24,8 +24,12 @@ export class PlansController {
   constructor(private readonly plansService: PlansService) {}
 
   @Get()
-  getPlans() {
-    return this.plansService.getPlans();
+  async getPlans(@Res() res: Response) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Max-Age', '3600');
+
+    const result = await this.plansService.getPlans();
+    res.send(result);
   }
   @Post()
   createPlan(@Body() body: PlanDTO, @Res() res: Response) {

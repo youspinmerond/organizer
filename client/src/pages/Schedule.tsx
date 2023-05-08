@@ -13,7 +13,6 @@ interface IAction {
 type ISchedule = IAction[]
 
 export default function Schedule({schedule}: {schedule?: ISchedule}) {
-
   if(!schedule) schedule = [
     {
       id: 1,

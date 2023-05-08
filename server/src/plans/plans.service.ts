@@ -5,11 +5,8 @@ const prisma = new PrismaClient();
 
 @Injectable()
 export class PlansService {
-  async getPlans(): Promise<PlanDTO[]> {
-    const count = await prisma.plan.count();
-    const result = await prisma.plan.findMany({
-      take: count,
-    });
+  async getPlans(): Promise<any> {
+    const result = await prisma.plan.findMany();
     return result;
   }
 

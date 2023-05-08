@@ -11,6 +11,7 @@ import About from './pages/About.tsx';
 import Schedule from './pages/Schedule.tsx';
 import Layout from './Layout.tsx';
 import Useful from './pages/Useful.tsx';
+import Plans from './pages/Plans.tsx';
 
 const router = createBrowserRouter([
   {
@@ -30,11 +31,14 @@ const router = createBrowserRouter([
     path: '/useful',
     element: <Layout><Useful/></Layout>
   },
+  {
+    path: '/plans',
+    element: <Layout><Plans/></Layout>
+  },
 ]);
 
-ReactDOM.createRoot(document.body).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    {/* <Header/> */}
     <RouterProvider router={router}/>
   </React.StrictMode>,
 );
