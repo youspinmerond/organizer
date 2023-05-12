@@ -14,8 +14,8 @@ import { z } from 'zod';
 import { Response } from 'express';
 
 const schema = z.object({
-  name: z.string().min(3),
-  description: z.string().min(4),
+  name: z.string().min(2),
+  description: z.string().min(3),
   status: z.boolean(),
 });
 
@@ -42,13 +42,15 @@ export class PlansController {
     return result;
   }
   @Put(':id')
-  async updatePlan(@Param('id') id, @Body() body: PlanDTO) {
-    const status = schema.safeParse(body);
+  async updatePlan(@Param('id') id, @Body() body: PlanDTO | string) {
+    const preaparedBody = typeof body === 'string' ? JSON.parse(body) : body;
+
+    const status = schema.safeParse(preaparedBody);
     if (!status.success) return status;
 
     const result = await this.plansService.updatePlan({
       id: Number(id),
-      ...body,
+      ...preaparedBody,
     });
     console.log(result);
     return result;
