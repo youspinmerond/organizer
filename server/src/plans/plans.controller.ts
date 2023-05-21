@@ -39,7 +39,7 @@ export class PlansController {
       res.json(status);
     }
     const result = this.plansService.createPlan(body);
-    return result;
+    res.json(result);
   }
   @Put(':id')
   async updatePlan(@Param('id') id, @Body() body: PlanDTO | string) {
@@ -52,7 +52,6 @@ export class PlansController {
       id: Number(id),
       ...preaparedBody,
     });
-    console.log(result);
     return result;
   }
   @Delete(':id')

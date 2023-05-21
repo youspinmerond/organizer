@@ -1,0 +1,12 @@
+import { Controller, Get, Param } from '@nestjs/common';
+import { UsefulService } from './useful.service';
+
+@Controller('api/useful')
+export class UsefulController {
+  constructor(private readonly usefulService: UsefulService) {}
+
+  @Get(':id')
+  async getUseful(@Param('id') id: number) {
+    return this.usefulService.getUseful(id);
+  }
+}
