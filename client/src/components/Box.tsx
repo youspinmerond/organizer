@@ -5,20 +5,6 @@ interface IPlan {
   status: boolean;
 }
 
-function Show(plans: {plans: IPlan[]}) {
-  if(!Array.isArray(plans.plans)) return <div></div>;
-  // return <div></div>;
-  return (
-    <div>
-      {
-        plans.plans.map((plan) => {
-          return <div key={plan.id}>{plan.name}</div>;
-        })
-      }
-    </div>
-  );
-}
-
 interface IBox {
   plans: IPlan[];
   setPlans: React.Dispatch<React.SetStateAction<IPlan[] | undefined>>;

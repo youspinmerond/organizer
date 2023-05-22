@@ -23,7 +23,7 @@ export default function ListBlock({name, list}: IComponent) {
           {
             list.map(e => {
               return (
-                <a href={e[0]} key={e[0]}>{e[1]}</a>
+                <a href={e[1]} key={e[1]}>{e[0]}</a>
               );
             })
           }

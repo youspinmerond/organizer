@@ -21,3 +21,9 @@ model Plan {
   description String
   status Boolean
 }
+
+model Useful {
+  id Int @unique @id @default(autoincrement())
+  name String
+  content String
+}
